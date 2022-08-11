@@ -6,6 +6,7 @@ import org.apache.flume.Event;
 import org.apache.flume.interceptor.Interceptor;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 import java.util.List;
 
 public class ETLInterceptor implements Interceptor {
@@ -37,10 +38,11 @@ public class ETLInterceptor implements Interceptor {
 
     @Override
     public List<Event> intercept(List<Event> list) {
-        for (int i = 0; i < list.size(); i++) {
-            Event event = list.get(i);
+        Iterator<Event> it = list.iterator();
+        while (it.hasNext()) {
+            Event event = it.next();
             if (intercept(event) == null) {
-                list.remove(i);
+                it.remove();
             }
         }
         return list;
