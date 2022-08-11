@@ -38,6 +38,7 @@ public class ETLInterceptor implements Interceptor {
 
     @Override
     public List<Event> intercept(List<Event> list) {
+        System.out.println("批量处理");
         Iterator<Event> it = list.iterator();
         while (it.hasNext()) {
             Event event = it.next();
