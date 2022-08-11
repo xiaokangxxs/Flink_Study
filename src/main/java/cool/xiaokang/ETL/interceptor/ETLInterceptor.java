@@ -46,6 +46,7 @@ public class ETLInterceptor implements Interceptor {
                 it.remove();
             }
         }
+        System.out.println("merge conflict");
         return list;
     }
 
